@@ -1,0 +1,11 @@
+@source '../../_pages/';
+@source '../../_components/';
+@source '../../_templates/';
+@source '../../__data-formatters/';
+@source '../../blocks/';
+@source '../../functions/';
+
+@theme {
+    --spacing-content: 40.5rem;
+    --spacing-wide: 80rem;
+}

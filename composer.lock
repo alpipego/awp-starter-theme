@@ -1,0 +1,109 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "14d409b3f21404f89d290c5c4c10e629",
+    "packages": [
+        {
+            "name": "alpipego/awp-assets",
+            "version": "0.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alpipego/awp-assets.git",
+                "reference": "af3951a767c2aa8110e41d4ec3b2e8be8f3c2cc2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alpipego/awp-assets/zipball/af3951a767c2aa8110e41d4ec3b2e8be8f3c2cc2",
+                "reference": "af3951a767c2aa8110e41d4ec3b2e8be8f3c2cc2",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1|^8.0"
+            },
+            "suggest": {
+                "johnpbloch/wordpress-core": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Alpipego\\AWP\\Assets\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "alpipego",
+                    "email": "alpipego@gmail.com"
+                }
+            ],
+            "description": "Improve handling of assets (js, css) in WordPress",
+            "support": {
+                "issues": "https://github.com/alpipego/awp-assets/issues",
+                "source": "https://github.com/alpipego/awp-assets/tree/0.7.1"
+            },
+            "time": "2022-01-11T17:50:20+00:00"
+        },
+        {
+            "name": "alpipego/awp-template",
+            "version": "0.11.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alpipego/awp-template.git",
+                "reference": "7acbef6dcd2f4d22706b64c448c58f629b50d512"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alpipego/awp-template/zipball/7acbef6dcd2f4d22706b64c448c58f629b50d512",
+                "reference": "7acbef6dcd2f4d22706b64c448c58f629b50d512",
+                "shasum": ""
+            },
+            "require": {
+                "alpipego/awp-assets": "~0.3|dev-master",
+                "php": "^7.1|^8.0"
+            },
+            "suggest": {
+                "johnpbloch/wordpress-core": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions.php"
+                ],
+                "psr-4": {
+                    "Alpipego\\AWP\\Template\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Goller",
+                    "email": "alpipego@gmail.com"
+                }
+            ],
+            "description": "wp.template and locate_template loader",
+            "support": {
+                "issues": "https://github.com/alpipego/awp-template/issues",
+                "source": "https://github.com/alpipego/awp-template/tree/0.11.3"
+            },
+            "time": "2024-10-11T02:36:25+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {},
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {},
+    "platform-dev": {},
+    "plugin-api-version": "2.6.0"
+}

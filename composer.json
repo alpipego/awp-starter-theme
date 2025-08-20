@@ -1,0 +1,14 @@
+{
+  "name": "alpipego/wordpress-theme",
+  "type": "wordpress-theme",
+  "require": {
+    "php": "^8.2",
+    "alpipego/awp-template": "^0.11.3",
+    "alpipego/awp-assets": "^0.7.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Theme\\": "src/"
+    }
+  }
+}
