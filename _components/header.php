@@ -9,9 +9,12 @@
  * @var string $close_icon
  * @var string $menu_button_label
  *
- * @var string $main_nav    _components/main-nav.php
- * @var string $socials     _components/socials-nav.php
+ * @var string $search_form
+ *
+ * @var string $main_nav _components/main-nav.php
+ * @var string $socials  _components/socials-nav.php
  */
+
 ?>
 <header class="w-full mb-5 flex flex-wrap pb-5 lg:my-8 lg:pb-0 bg-zink-200">
     <a href="<?= $home_url ?>" class="h-[38px] w-[231px]" aria-label="<?= $home_label ?>">
