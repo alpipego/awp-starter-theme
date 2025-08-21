@@ -30,10 +30,13 @@ module.exports = {
         "imagemin",
     ],
     "css": [
-        "postcss:tailwind",
+        "tailwind",
         "postcss:default",
         "postcss:mediaqueries",
         "newer:copy:css"
+    ],
+    "tailwind": [
+        "postcss:tailwind",
     ],
     "js": [
         "rollup",
