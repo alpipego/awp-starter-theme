@@ -54,6 +54,11 @@ add_action('wp_footer', static function () {
 // setup automatic field syncing and UI for acf
 require_once __DIR__ . '/functions/acf.php';
 
+add_action('init', static function () {
+    // setup the translations/translatable strings
+    require_once __DIR__ . '/functions/translations.php';
+});
+
 // handle scripts and styles, globally and for patterns (pages, templates, components etc.)
 require_once __DIR__ . '/functions/assets.php';
 

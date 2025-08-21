@@ -1,37 +1,38 @@
 <?php
 
 /**
- * Run as `wp eval-file --skip-plugins cli-scripts/acf-field-translations.php`
- * or `ddev wp eval-file --skip-plugins cli-scripts/acf-field-translations.php`
+ * Run as `wp eval-file --skip-plugins scripts/acf-field-translations.php`
+ * or `ddev wp eval-file --skip-plugins scripts/acf-field-translations.php`
  * from the root of your project.
  *
- * Potentially call this afterwards to regenerate the *.pot file
- * `ddev wp i18n make-pot ./web/app/themes/tophair-theme ./web/app/themes/tophair-theme/languages/tophair.pot`
  */
-$themeDir = get_stylesheet_directory();
 const TRANSLATABLE_FIELDS = ['title' => '', 'label' => '', 'description' => '', 'instructions' => '', 'placeholder' => '', 'choices' => [], 'message' => ''];
 $translatable = [];
+$themeDir     = dirname(__DIR__);
+$template     = basename($themeDir);
 
-$collectTranslatable = static function (array $item, array $context) use (&$translatable) {
+$collectTranslatable = static function (array $item, array $context) use (&$translatable, $template) {
     $kvPairs = array_intersect_key($item, TRANSLATABLE_FIELDS);
     if (!empty($item['label'])) {
         $context[] = $item['label'];
     }
-    $contextString = implode(' → ', $context);
-    $translatable[$item['key']] = array_filter(array_combine(
-        array_keys($kvPairs),
-        array_map(static function ($value) use ($contextString) {
-            if (empty($value)) {
-                return null;
-            }
+    $contextString              = implode(' → ', $context);
+    $translatable[$item['key']] = array_filter(
+        array_combine(
+            array_keys($kvPairs),
+            array_map(static function ($value) use ($contextString, $template) {
+                if (empty($value)) {
+                    return null;
+                }
 
-            if (is_array($value)) {
-                return array_map(static fn($choice) => "_x('$choice', 'ACF: $contextString → Choice', 'tophair')", $value);
-            }
+                if (is_array($value)) {
+                    return array_map(static fn($choice) => "_x('$choice', 'ACF: $contextString → Choice', '$template')", $value);
+                }
 
-            return "_x('$value', 'ACF: $contextString', 'tophair')";
-        }, $kvPairs),
-    ));
+                return "_x('$value', 'ACF: $contextString', '$template')";
+            }, $kvPairs),
+        ),
+    );
 };
 
 $recursiveSubFields = static function (array $field, array $context) use (&$recursiveSubFields, $collectTranslatable) {
@@ -46,7 +47,7 @@ $recursiveSubFields = static function (array $field, array $context) use (&$recu
     }
 };
 
-foreach (glob($themeDir . '/assets/src/fields/*.json') as $groupFile) {
+foreach (glob($themeDir . '/assets/fields/*.json') as $groupFile) {
     $group = json_decode(file_get_contents($groupFile), true, 512, JSON_THROW_ON_ERROR);
     if (!isset($group['fields'])) {
         // options group
@@ -63,7 +64,7 @@ foreach (glob($themeDir . '/assets/src/fields/*.json') as $groupFile) {
 }
 
 // write the array to a PHP file that can be parsed
-$outputFile = $themeDir . '/functions/acf-filter/field-translations.php';
+$outputFile = $themeDir . '/dist/translate/acf-field-translatables.php';
 $fileHandle = fopen($outputFile, 'wb');
 
 // Write the opening PHP tag

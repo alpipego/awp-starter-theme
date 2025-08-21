@@ -6,7 +6,8 @@ module.exports = {
         "css",
         "postcss:nano",
         "js",
-        "buildImages"
+        "buildImages",
+        "i18n",
     ],
     "default": [
         "grunt",
