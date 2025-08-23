@@ -98,6 +98,13 @@ class Image
         return array_merge(self::$defaultSizes, $sizes);
     }
 
+    public static function getSvgStringFromUpload(int $icon): ?string
+    {
+        $file = get_attached_file($icon);
+
+        return self::getSvgString($file, false);
+    }
+
     public static function getSvgString(string $file, bool $autoprefix = true): ?string
     {
         if ($autoprefix && !str_starts_with($file, get_stylesheet_directory() . '/dist/img/')) {
@@ -112,7 +119,7 @@ class Image
             return self::$svgCache[$file];
         }
 
-        if (!file_exists($file)||mime_content_type($file) !== 'image/svg+xml') {
+        if (!file_exists($file) || mime_content_type($file) !== 'image/svg+xml') {
             return null;
         }
 
