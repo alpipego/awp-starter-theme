@@ -4,8 +4,6 @@ namespace Theme\Loaders;
 
 use Alpipego\AWP\Template\TemplateInterface;
 
-use function Theme\get_fields;
-
 class BlockTemplateLoader
 {
     public static function build(array $block): string
@@ -45,7 +43,7 @@ class BlockTemplateLoader
 
     private static function templateInclude(string $name, array $data): TemplateInterface
     {
-        $component = str_replace(get_template() . '/', '', $name);
+        $component = str_replace('theme/', '', $name);
 
         $pattern = TemplateLoader::pattern()->buildComponent($component, $data);
         $pattern->render([]);

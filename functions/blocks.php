@@ -13,16 +13,16 @@ add_action('init', static function (): void {
     }
 });
 
-add_action('after_setup_theme', static function() {
-	$theme = wp_get_theme(get_stylesheet());
+add_action('after_setup_theme', static function () {
+    $theme = wp_get_theme(get_stylesheet());
 
-	add_filter('block_categories_all', static fn(array $categories) => array_merge(
-		[
-			[
-				'slug'  => $theme->get_template(),
-				'title' => $theme->get('Theme Name'),
-			],
-		],
-		$categories,
-));
+    add_filter('block_categories_all', static fn(array $categories) => array_merge(
+        [
+            [
+                'slug'  => 'theme',
+                'title' => $theme->get('ThemeName'),
+            ],
+        ],
+        $categories,
+    ));
 });
