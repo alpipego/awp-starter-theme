@@ -28,7 +28,12 @@ class MenuItems
 
             return;
         }
-        $menu  = wp_get_nav_menu_object($locations[$location]);
+        $menu = wp_get_nav_menu_object($locations[$location]);
+        if (empty($menu)) {
+            $this->items = [];
+
+            return;
+        }
         $items = wp_get_nav_menu_items($menu->term_id, ['update_post_term_cache' => false]);
         // instead of throwing an exception, short-circuit getting the items and default to the empty array
         if ($items === false) {
