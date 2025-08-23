@@ -64,5 +64,11 @@
     "time-grunt": "^2.0.0",
     "underscore": "^1.13.7",
     "webfontloader": "^1.6.28"
+  },
+  "devDependencies": {
+    "@prettier/plugin-php": "^0.24.0",
+    "grunt-prettier": "^2.2.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.14"
   }
 }
