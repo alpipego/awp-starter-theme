@@ -106,8 +106,21 @@ class MenuItems
             'level'                 => $level,
             'children'              => $item->children ?? [],
             'atts'                  => $atts,
+            'classes'               => $this->parseClasses($item->classes),
             'raw'                   => $item,
         ];
+    }
+
+    private function parseClasses(array $classes): array
+    {
+        return array_filter($classes, static function (string $class) {
+            if (str_starts_with($class, 'menu-item')) {
+                return false;
+            }
+            $class = sanitize_html_class($class);
+
+            return !empty($class);
+        });
     }
 
     public function getItems(): array
