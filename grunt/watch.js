@@ -8,8 +8,8 @@ module.exports = {
         tasks: ['sass', 'css']
     },
     tailwind: {
-        files: ["<%= path.src %>/css/tailwind.css", "<%= path.src %>/css/tailwind/**/*.css", "_components/**/*.php", "_pages/**/*.php", "_templates/**/*.php", "tailwind.config.js"],
-        tasks: ['tailwind', 'css']
+        files: ["<%= path.src %>/tailwind/*.css", "<%= path.src %>/tailwind/**/*.css", "_components/**/*.php", "_pages/**/*.php", "_templates/**/*.php"],
+        tasks: ['tailwind', 'clean:responsiveCss', 'css']
     },
     js: {
         files: ['<%= path.src %>/js/**/*.js', '<%= path.src %>/js/*.js'],

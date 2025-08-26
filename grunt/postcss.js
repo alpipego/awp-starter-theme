@@ -3,7 +3,7 @@ module.exports = function (grunt, options) {
     const defaultTheme = require('tailwindcss/defaultTheme');
 
     return {
-        mediaqueries: {
+        mq: {
             options: {
                 processors: [
                     require('@tailwindcss/nesting'),

@@ -32,7 +32,7 @@ module.exports = {
     "css": [
         "tailwind",
         "postcss:default",
-        "postcss:mediaqueries",
+        "postcss:mq",
         "newer:copy:css"
     ],
     "tailwind": [
