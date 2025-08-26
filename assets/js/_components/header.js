@@ -67,7 +67,7 @@ topMenus.forEach(menu => {
         touch = true;
     }, {passive: true});
 
-    menu.querySelector("button[data-submenu]").addEventListener("click", () => {
+    menu.querySelector("button[data-submenu]")?.addEventListener("click", () => {
         // prevent mouseover and click race-condition. Only observed in Chrome Device Simulator.
         if (Date.now() - open < 10) {
             return;
