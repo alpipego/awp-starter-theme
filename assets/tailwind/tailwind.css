@@ -1,2 +1,6 @@
 @import "tailwindcss" source(none);
 @import "./config.css";
+
+:root :where(a:where(:not(.wp-element-button))) {
+    text-decoration: inherit;
+}
