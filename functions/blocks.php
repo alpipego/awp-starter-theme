@@ -1,5 +1,10 @@
 <?php
 
+use Theme\Loaders\BlockTemplateLoader;
+
+// Initialize the inner block class system
+add_filter('render_block', [BlockTemplateLoader::class, 'applyInnerBlockClasses'], 10, 2);
+
 /**
  * Register all ACF-enabled blocks with block.json
  */
@@ -25,4 +30,19 @@ add_action('after_setup_theme', static function () {
         ],
         $categories,
     ));
+});
+
+/**
+ * Pass inner block class mappings to editor JavaScript
+ */
+add_action('enqueue_block_assets', static function () {
+    if (!is_admin()) {
+        return;
+    }
+
+    wp_localize_script(
+        wp_get_theme()->get_template() . '-editor',
+        'themeInnerBlockClasses',
+        BlockTemplateLoader::getAllInnerBlockClassMappings(),
+    );
 });

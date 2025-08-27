@@ -159,7 +159,7 @@ add_action('enqueue_block_assets', static function () {
     wp_enqueue_script(
         $theme->get_template() .'-editor',
         get_template_directory_uri() . $editorScript,
-        ['wp-i18n'],
+        ['wp-i18n', 'wp-hooks', 'wp-compose', 'wp-element', 'wp-data', 'wp-dom-ready'],
         filemtime(get_template_directory() . $editorScript),
     );
 });
