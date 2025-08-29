@@ -7,6 +7,7 @@ module.exports = {
         '<%= path.dest %>/{css,js,fonts}/**/*',
     ],
     responsiveCss: [
+        '<%= path.tmp %>/css/app-*.css',
         '<%= path.dest %>/css/app-*.css',
     ],
     images: [
